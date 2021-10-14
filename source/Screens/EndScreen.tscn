@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://source/User Interface/Quit.gd" type="Script" id=1]
+[ext_resource path="res://source/User Interface/Play.gd" type="Script" id=2]
+[ext_resource path="res://source/User Interface/Quit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/User Interface/Title.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/background.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=7]
+[ext_resource path="res://source/Screens/EndScreen.gd" type="Script" id=8]
+
+[node name="EndScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -3.0
+margin_bottom = -3.0
+theme = ExtResource( 7 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -194.5
+margin_top = -58.4424
+margin_right = 194.5
+margin_bottom = 136.558
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Menu"]
+margin_right = 389.0
+margin_bottom = 95.0
+size_flags_vertical = 3
+text = "Play Again"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+next_scene_path = "res://source/Screens/MainScreen.tscn"
+
+[node name="Quit" type="Button" parent="Menu" instance=ExtResource( 4 )]
+margin_top = 99.0
+margin_right = 389.0
+margin_bottom = 195.0
+size_flags_vertical = 3
+text = "Quit"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" parent="." instance=ExtResource( 5 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -196.069
+margin_bottom = -139.069
+text = "Finished"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -139.5
+margin_top = -138.333
+margin_right = 139.5
+margin_bottom = -73.3333
+text = "Your final score is %s.
+You died %s times."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Menu/Play" to="Menu/Play" method="_on_button_up"]
+[connection signal="button_up" from="Menu/Quit" to="Menu/Quit" method="_on_button_up"]
